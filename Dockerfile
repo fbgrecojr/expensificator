@@ -10,7 +10,8 @@ COPY ./package.json /src/package.json
 
 RUN cd /src \
 	&& npm install \
-    && npm install --global gulp-cli
+    && npm install --global gulp-cli \
+    && npm install gulp
 
 COPY . /src
 
