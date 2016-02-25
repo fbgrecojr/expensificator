@@ -11,8 +11,10 @@
 </head>
 <body ng-controller="MainController">
     <!-- MDL Spinner Component -->
-    <div id="loading" class="mdl-spinner mdl-js-spinner is-active" ng-show="main.loading"></div>
-    <div id="loading-overlay" ng-show="main.loading"></div>
+    <!-- MDL Progress Bar with Indeterminate Progress -->
+    <div id="loading" class="mdl-progress mdl-js-progress mdl-progress__indeterminate" ng-show="main.loading"></div>
+    <!-- <div class="mdl-spinner mdl-js-spinner is-active"></div> -->
+    <!-- <div id="loading-overlay" ng-show="main.loading"></div> -->
 
     <div>
         <h1>{{ message }}</h1>

@@ -13,38 +13,6 @@ app.directive('ngFiles', ['$parse', ngFiles]);
 // app.service('fileUpload', ['$scope', '$http', fileUpload]);
 app.controller('FormController', ['$scope', '$http', FormController]);
 
-// $(document).ready(function() {
-//     $('form').submit(function($e) {
-//         $e.preventDefault();
-
-//         var img = $('input[type=file]');
-
-//         var form = new FormData();
-
-//         form.append('image', $('input[type=file]')[0].files[0]);
-//         form.append('language', 'en');
-//         form.append('apikey', 'QUHM253S2x');
-//         // var formData = {
-//         //     language: $('[name=language]').val(),
-//         //     apikey: $('[name=apikey]').val(),
-//         //     image: fileInputElement.files[0]
-//         // };
-
-//         $.ajax({
-//             type: 'POST',
-//             url: 'http://api.ocrapiservice.com/1.0/rest/ocr',
-//             data: form,
-//             contentType: false,
-//             processData: false,
-//             success: function(data) { console.log(data); },
-//             error: function(err) { console.log(err); }
-//         });
-
-//         console.dir(form);
-//         console.log('submit was pressed.');
-//     });
-// });
-
 },{"./controllers/FormController":2,"./controllers/MainController":3,"./directives/ngFiles":4,"angular":6,"jquery":7}],2:[function(require,module,exports){
 var $ = require('jquery');
 var _ = require('lodash');
