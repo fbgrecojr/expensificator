@@ -33,7 +33,7 @@
         <form ng-controller="FormController" ng-submit="processForm()">
             <input type="hidden" name="MAX_FILE_SIZE" value="100000000" />
                 <input name="image" id="file" class="inputfile" type="file" accept="image/*" capture="camera" ng-files="file" />
-                <label for="file">Choose a file</label>
+                <label for="file"><span id="plus-sign"></span></label>
             <br />
             <button type="submit">Upload File</button>
 
@@ -50,6 +50,7 @@
                 <li>{{main.type}}</li>
             </ul>
         </div>
+        <div class="footer navbar-fixed-bottom"></div>
     </div>
 </body>
 </html>

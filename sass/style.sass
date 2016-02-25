@@ -2,9 +2,10 @@ $someColor: #3594B1
 $white: #fff
 $black: #000
 $nm-blue: #002b49
-$upload-label-color: #f1e5e6
-$upload-label-bg: #d3394c
+$upload-label-color: $white
+$upload-label-bg: #00978C
 $upload-label-bg-hover: #722040
+$bg-grey: #4A4A4A
 
 
 body
@@ -63,8 +64,36 @@ form
     bottom: 0px
     margin: auto
     margin-left: -30px
-    height: 70px
+    height: 65px
     width: 60px
+    border-radius: 5px 5px 0 0
 
 .inputfile:focus + label, .inputfile + label:hover
     background-color: $upload-label-bg-hover
+
+#plus-sign
+    background: $white
+    width: 2px
+    height: 36px
+    position: fixed
+    bottom: 15px
+    border-radius: 2px
+
+#plus-sign:before
+    background: $white
+    content: ""
+    width: 36px
+    height: 2px
+    position: absolute
+    top: 17px
+    left: -17px
+    margin-left: -1px
+    border-radius: 2px
+
+.footer
+    position: fixed
+    height: 60px
+    width: 100%
+    background-color: $bg-grey
+    bottom: 0px
+    z-index: -1
