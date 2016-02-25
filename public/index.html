@@ -3,39 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <title>My App</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://code.getmdl.io/1.1.1/material.indigo-pink.min.css">
+    <meta name="viewport" content="minimal-ui, width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="expensificator" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" crossorigin="anonymous"></script> -->
+
     <link rel="stylesheet" type="text/css" href="/css/style.css">
-    <script defer src="https://code.getmdl.io/1.1.1/material.min.js"></script>
     <script src="/js/main.js"></script>
 </head>
 <body ng-controller="MainController">
-    <!-- MDL Spinner Component -->
-    <!-- MDL Progress Bar with Indeterminate Progress -->
-    <div id="loading" class="mdl-progress mdl-js-progress mdl-progress__indeterminate" ng-show="main.loading"></div>
+    <div class="container">
+        <!-- MDL Spinner Component -->
+        <!-- MDL Progress Bar with Indeterminate Progress -->
+        <div id="loading" class="mdl-progress mdl-js-progress mdl-progress__indeterminate" ng-show="main.loading"></div>
 
-    <div class="heading">
-        <h1>{{ message }}</h1>
-    </div>
+        <div class="heading navbar-fixed-top">
+            <h1>{{ message }}</h1>
+        </div>
 
-    <form ng-controller="FormController" ng-submit="processForm()">
-        <input type="hidden" name="MAX_FILE_SIZE" value="100000000" />
-            Choose a file to upload: <input name="image" type="file" accept="image/*" capture="camera" ng-files="file" />
-        <br />
-        <input type="submit" value="Upload File" />
+        <form ng-controller="FormController" ng-submit="processForm()">
+            <input type="hidden" name="MAX_FILE_SIZE" value="100000000" />
+                <input name="image" id="file" class="inputfile" type="file" accept="image/*" capture="camera" ng-files="file" />
+                <label for="file">Choose a file</label>
+            <br />
+            <button type="submit">Upload File</button>
 
-        <pre>
-            {{ formData }}
-        </pre>
-    </form>
+            <pre>
+                {{ formData }}
+            </pre>
+        </form>
 
-    <div>
-        <ul>
-            <li>{{main.vendor}}</li>
-            <li>{{main.date}}</li>
-            <li>{{main.total}}</li>
-            <li>{{main.type}}</li>
-        </ul>
+        <div>
+            <ul>
+                <li>{{main.vendor}}</li>
+                <li>{{main.date}}</li>
+                <li>{{main.total}}</li>
+                <li>{{main.type}}</li>
+            </ul>
+        </div>
     </div>
 </body>
 </html>

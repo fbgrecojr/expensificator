@@ -1,5 +1,9 @@
-var $ = require('jquery');
-require('angular');
+global.jQuery = require('jquery');
+var bootstrap = require('bootstrap');
+var angular = require('angular');
+var attachFastClick = require('fastclick');
+attachFastClick(document.body);
+
 var MainController = require('./controllers/MainController');
 var FormController = require('./controllers/FormController');
 var ngFiles = require('./directives/ngFiles');

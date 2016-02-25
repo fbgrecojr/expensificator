@@ -1,5 +1,17 @@
+body {
+  margin-top: 75px; }
+
 h1 {
-  color: #3594B1; }
+  color: #fff;
+  line-height: 75px;
+  margin: 0; }
+
+.heading {
+  width: 100%;
+  margin: auto;
+  text-align: center;
+  height: 75px;
+  background-color: #002b49; }
 
 #loading-overlay {
   position: absolute;
@@ -11,3 +23,38 @@ h1 {
 
 #loading {
   width: 100%; }
+
+form {
+  width: 50%;
+  margin: auto;
+  text-align: center; }
+
+.inputfile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1; }
+
+.inputfile + label {
+  max-width: 80%;
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+  overflow: hidden;
+  padding: 0.625rem 1.25rem;
+  display: inline-block;
+  color: #f1e5e6;
+  background-color: #d3394c;
+  position: absolute;
+  bottom: 0px;
+  margin: auto;
+  margin-left: -30px;
+  height: 70px;
+  width: 60px; }
+
+.inputfile:focus + label, .inputfile + label:hover {
+  background-color: #722040; }
