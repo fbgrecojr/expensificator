@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>My App</title>
+    <script src="/js/main.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+    <div ng-controller="MainController">
+        <h1>{{ message }}</h1>
+    </div>
+
+    <form>
+        <input type="hidden" name="MAX_FILE_SIZE" value="100000000" />
+            Choose a file to upload: <input name="image" type="file" />
+        <br />
+<!--         <input type="text" name="language" value="en" />
+        <input type="text" name="apikey" value="QUHM253S2x" />
+ -->
+        <input type="submit" value="Upload File" />
+
+        <div class="webcam">
+            <video autoplay></video>
+            <canvas></canvas>
+        </div>
+    </form>
+</body>
+</html>
