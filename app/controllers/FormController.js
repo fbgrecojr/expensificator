@@ -1,7 +1,7 @@
 var $ = require('jquery');
 var _ = require('lodash');
 
-module.exports = function($scope, fileUpload) {
+module.exports = function($scope, $http) {
     // var formData = new FormData();
     // $scope.getTheFiles = function($files) {
     //     _.forOwn($files, function(value, key) {
@@ -21,22 +21,49 @@ module.exports = function($scope, fileUpload) {
 
         var uploadUrl = 'http://api.ocrapiservice.com/1.0/rest/ocr';
 
-        fileUpload.uploadFileToUrl(file, uploadUrl, formData);
-        // _.forOwn($scope.formData, function(value, key) {
-        //     formData.append(value, key);
-        // });
+        var fd = new FormData();
+        fd.append('image', file);
 
-        // var request = {
-        //     method: 'POST',
-        //     url: 'http://api.ocrapiservice.com/1.0/rest/ocr',
-        //     data: formData,
-        //     headers: {
-        //         'Content-Type': undefined
-        //     }
-        // };
+        _.forOwn(formData, function(value, key) {
+            fd.append(key, value);
+        });
 
-        // $http(request).success(function(data){
-        //     console.log(data);
-        // });
+        $scope.main.loading = true;
+
+        $http.post(uploadUrl, fd, {
+            transformRequest: angular.identity,
+            headers: { 'Content-Type': undefined }
+        })
+        .success(function(data) {
+            $scope.main.loading = false;
+            console.log(data);
+            $scope.populateForm(data);
+        })
+        .error(function(err) {
+            console.log(err);
+        });
+    };
+
+    $scope.populateForm = function(data) {
+        var str = data.toString();
+
+        var strArr = str.split('\n');
+
+        console.dir(strArr);
+
+        var total;
+
+        strArr.forEach(function(item) {
+            var reg = /^(TOTAL)/g;
+
+            if (reg.test(item)) {
+                total = item.split(' ')[1];
+            }
+        });
+
+        $scope.main.vendor = strArr[0].split(' ')[0];
+        $scope.main.date = strArr.pop().split(' ')[0];
+        $scope.main.total = total;
+        $scope.main.type = 'Groceries';
     };
 };

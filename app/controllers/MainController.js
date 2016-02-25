@@ -1,3 +1,5 @@
 module.exports = function($scope) {
-    $scope.message = 'Two birds killed with one stone!';
+    $scope.message = 'expensificator is freaking awesome!';
+    $scope.main = {};
+    $scope.main.loading = false;
 };

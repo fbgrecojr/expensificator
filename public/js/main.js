@@ -4,14 +4,14 @@ require('angular');
 var MainController = require('./controllers/MainController');
 var FormController = require('./controllers/FormController');
 var ngFiles = require('./directives/ngFiles');
-var fileUpload = require('./services/fileUpload');
+// var fileUpload = require('./services/fileUpload');
 
 var app = angular.module('app', []);
 app.controller('MainController', ['$scope', MainController]);
 
 app.directive('ngFiles', ['$parse', ngFiles]);
-app.service('fileUpload', ['$http', fileUpload]);
-app.controller('FormController', ['$scope', 'fileUpload', FormController]);
+// app.service('fileUpload', ['$scope', '$http', fileUpload]);
+app.controller('FormController', ['$scope', '$http', FormController]);
 
 // $(document).ready(function() {
 //     $('form').submit(function($e) {
@@ -45,11 +45,11 @@ app.controller('FormController', ['$scope', 'fileUpload', FormController]);
 //     });
 // });
 
-},{"./controllers/FormController":2,"./controllers/MainController":3,"./directives/ngFiles":4,"./services/fileUpload":5,"angular":7,"jquery":8}],2:[function(require,module,exports){
+},{"./controllers/FormController":2,"./controllers/MainController":3,"./directives/ngFiles":4,"angular":6,"jquery":7}],2:[function(require,module,exports){
 var $ = require('jquery');
 var _ = require('lodash');
 
-module.exports = function($scope, fileUpload) {
+module.exports = function($scope, $http) {
     // var formData = new FormData();
     // $scope.getTheFiles = function($files) {
     //     _.forOwn($files, function(value, key) {
@@ -69,29 +69,58 @@ module.exports = function($scope, fileUpload) {
 
         var uploadUrl = 'http://api.ocrapiservice.com/1.0/rest/ocr';
 
-        fileUpload.uploadFileToUrl(file, uploadUrl, formData);
-        // _.forOwn($scope.formData, function(value, key) {
-        //     formData.append(value, key);
-        // });
+        var fd = new FormData();
+        fd.append('image', file);
 
-        // var request = {
-        //     method: 'POST',
-        //     url: 'http://api.ocrapiservice.com/1.0/rest/ocr',
-        //     data: formData,
-        //     headers: {
-        //         'Content-Type': undefined
-        //     }
-        // };
+        _.forOwn(formData, function(value, key) {
+            fd.append(key, value);
+        });
 
-        // $http(request).success(function(data){
-        //     console.log(data);
-        // });
+        $scope.main.loading = true;
+
+        $http.post(uploadUrl, fd, {
+            transformRequest: angular.identity,
+            headers: { 'Content-Type': undefined }
+        })
+        .success(function(data) {
+            $scope.main.loading = false;
+            console.log(data);
+            $scope.populateForm(data);
+        })
+        .error(function(err) {
+            console.log(err);
+        });
+    };
+
+    $scope.populateForm = function(data) {
+        var str = data.toString();
+
+        var strArr = str.split('\n');
+
+        console.dir(strArr);
+
+        var total;
+
+        strArr.forEach(function(item) {
+            var reg = /^(TOTAL)/g;
+
+            if (reg.test(item)) {
+                total = item.split(' ')[1];
+            }
+        });
+
+        $scope.main.vendor = strArr[0].split(' ')[0];
+        $scope.main.date = strArr.pop().split(' ')[0];
+        $scope.main.total = total;
+        $scope.main.type = 'Groceries';
     };
 };
 
-},{"jquery":8,"lodash":9}],3:[function(require,module,exports){
+},{"jquery":7,"lodash":8}],3:[function(require,module,exports){
 module.exports = function($scope) {
-    $scope.message = 'Two birds killed with one stone!';
+    $scope.message = 'expensificator is freaking awesome!';
+    $scope.main = {};
+    $scope.main.loading = false;
 };
 
 },{}],4:[function(require,module,exports){
@@ -112,33 +141,6 @@ module.exports = function($parse) {
 };
 
 },{}],5:[function(require,module,exports){
-var _ = require('lodash');
-
-module.exports = function($http) {
-    this.uploadFileToUrl = function(file, uploadUrl, obj) {
-        var fd = new FormData();
-        fd.append('image', file);
-
-        if (obj) {
-            _.forOwn(obj, function(value, key) {
-                fd.append(key, value);
-            });
-        }
-
-        $http.post(uploadUrl, fd, {
-            transformRequest: angular.identity,
-            headers: { 'Content-Type': undefined }
-        })
-        .success(function(data) {
-            console.log(data);
-        })
-        .error(function(err) {
-            console.log(err);
-        });
-    };
-};
-
-},{"lodash":9}],6:[function(require,module,exports){
 /**
  * @license AngularJS v1.5.0
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -30567,11 +30569,11 @@ $provide.value("$locale", {
 })(window, document);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],7:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":6}],8:[function(require,module,exports){
+},{"./angular":5}],7:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.2.1
  * http://jquery.com/
@@ -40404,7 +40406,7 @@ if ( !noGlobal ) {
 return jQuery;
 }));
 
-},{}],9:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 (function (global){
 /**
  * @license

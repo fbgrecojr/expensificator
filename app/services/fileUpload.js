@@ -1,6 +1,6 @@
 var _ = require('lodash');
 
-module.exports = function($http) {
+module.exports = function($scope, $http) {
     this.uploadFileToUrl = function(file, uploadUrl, obj) {
         var fd = new FormData();
         fd.append('image', file);
@@ -11,11 +11,14 @@ module.exports = function($http) {
             });
         }
 
+        $scope.loading = true;
+
         $http.post(uploadUrl, fd, {
             transformRequest: angular.identity,
             headers: { 'Content-Type': undefined }
         })
         .success(function(data) {
+            $scope.loading = false;
             console.log(data);
         })
         .error(function(err) {

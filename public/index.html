@@ -3,11 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>My App</title>
-    <script src="/js/main.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.1.1/material.indigo-pink.min.css">
     <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <script defer src="https://code.getmdl.io/1.1.1/material.min.js"></script>
+    <script src="/js/main.js"></script>
 </head>
-<body>
-    <div ng-controller="MainController">
+<body ng-controller="MainController">
+    <!-- MDL Spinner Component -->
+    <div id="loading" class="mdl-spinner mdl-js-spinner is-active" ng-show="main.loading"></div>
+    <div id="loading-overlay" ng-show="main.loading"></div>
+
+    <div>
         <h1>{{ message }}</h1>
     </div>
 
@@ -22,5 +29,14 @@
             {{ formData }}
         </pre>
     </form>
+
+    <div>
+        <ul>
+            <li>{{main.vendor}}</li>
+            <li>{{main.date}}</li>
+            <li>{{main.total}}</li>
+            <li>{{main.type}}</li>
+        </ul>
+    </div>
 </body>
 </html>
