@@ -6,13 +6,13 @@ MAINTAINER fbgrecojr@me.com
 RUN yum install -y epel-release \
 	&& yum install -y nodejs npm
 
-COPY ./package.json /src/package.json
+ADD . /src
+WORKDIR /src
 
 RUN cd /src \
 	&& npm install \
-    && npm install --global gulp-cli
-
-COPY . /src
+        && npm install --global gulp-cli \
+	&& npm install gulp --save-dev
 
 EXPOSE 8080
 
