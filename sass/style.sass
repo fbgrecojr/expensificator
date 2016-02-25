@@ -4,9 +4,10 @@ $black: #000
 $nm-blue: #002b49
 $upload-label-color: $white
 $upload-label-bg: #00978C
-$upload-label-bg-hover: #722040
 $bg-grey: #4A4A4A
 
+*
+    font-family: 'Open Sans', sans-serif
 
 body
     margin-top: 75px
@@ -15,6 +16,7 @@ h1
     color: $white
     line-height: 75px
     margin: 0
+    font-weight: 100
 
 .heading
     width: 100%
@@ -24,16 +26,14 @@ h1
     background-color: $nm-blue
 
 #loading-overlay
+    z-index: 2000
     position: absolute
     top: 0
+    left: 0
     height: 100%
     width: 100%
     background-color: $black
     opacity: 0.45
-
-#loading
-    width: 100%
-
 
 form
     width: 50%
@@ -49,6 +49,7 @@ form
     z-index: -1
 
 .inputfile + label
+    z-index: 3000
     max-width: 80%
     font-size: 1.25rem
     font-weight: 700
@@ -56,11 +57,10 @@ form
     white-space: nowrap
     cursor: pointer
     overflow: hidden
-    padding: 0.625rem 1.25rem
     display: inline-block
     color: $upload-label-color
     background-color: $upload-label-bg
-    position: absolute
+    position: fixed
     bottom: 0px
     margin: auto
     margin-left: -30px
@@ -68,27 +68,44 @@ form
     width: 60px
     border-radius: 5px 5px 0 0
 
-.inputfile:focus + label, .inputfile + label:hover
-    background-color: $upload-label-bg-hover
-
-#plus-sign
-    background: $white
-    width: 2px
-    height: 36px
+.happy
+    z-index: 3000
+    max-width: 80%
+    font-size: 1.25rem
+    font-weight: 700
+    text-overflow: ellipsis
+    white-space: nowrap
+    cursor: pointer
+    overflow: hidden
+    display: inline-block
+    color: #fff
+    background-color: #FFFFFF
     position: fixed
-    bottom: 15px
-    border-radius: 2px
+    bottom: 125px
+    border: 1px solid #C5C5C5
+    margin: auto
+    height: 70px
+    width: 70px
+    border-radius: 50%
+    box-shadow: 0 4px 5px 0 rgba(0,0,0,0.26),0 4px 10px 0 rgba(0,0,0,0.22)
 
-#plus-sign:before
-    background: $white
-    content: ""
-    width: 36px
-    height: 2px
-    position: absolute
-    top: 17px
-    left: -17px
-    margin-left: -1px
-    border-radius: 2px
+.center
+    left: 50%
+    margin-left: -35px
+
+.right
+    margin: 0
+    right: 10%
+    bottom: 90px
+
+.left
+    margin: 0
+    left: 10%
+    bottom: 90px
+
+span.middle > svg
+    height: 64px
+    width: 60px
 
 .footer
     position: fixed
