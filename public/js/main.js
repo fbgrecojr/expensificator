@@ -35,7 +35,7 @@ module.exports = function($scope, $http) {
 
         var formData = {
             language: 'en',
-            apikey: 'QUHM253S2x'
+            apikey: 'M7ke6uW4mh'
         };
 
         _.forOwn(formData, function(value, key) {
@@ -68,9 +68,7 @@ module.exports = function($scope, $http) {
             data: str
         };
 
-        $http.post(uploadUrl, fd, {
-
-        })
+        $http.post(uploadUrl, fd)
         .success(function(data) {
             $scope.main.loading = false;
             console.log(data);
