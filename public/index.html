@@ -18,39 +18,17 @@
     <script src="/js/main.js"></script>
 </head>
 <body ng-controller="MainController">
-    <div class="container">
+    <div class="container" ng-controller="FormController">
 
         <div class="heading navbar-fixed-top">
             <h1>{{ message }}</h1>
         </div>
 
-        <form ng-controller="FormController" ng-submit="processForm()">
+        <form ng-submit="processForm()">
             <input type="hidden" name="MAX_FILE_SIZE" value="100000000" />
                 <input name="image" id="file" class="inputfile" type="file" accept="image/*" capture="camera" ng-files="file" />
                 <label for="file">
-                    <span class="middle">
-                        <?xml version="1.0" encoding="utf-8"?>
-                        <!-- Generator: Adobe Illustrator 19.2.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-                        <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                             viewBox="0 0 64 64" style="enable-background:new 0 0 64 64;" xml:space="preserve">
-                        <style type="text/css">
-                            .st0{fill:#fff;}
-                        </style>
-                        <g>
-                            <g>
-                                <defs>
-                                    <circle id="SVGID_1_" cx="111" cy="-187.4" r="2.2"/>
-                                </defs>
-                                <clipPath id="SVGID_2_">
-                                    <use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
-                                </clipPath>
-                            </g>
-                        </g>
-                        <path class="st0" d="M46.1,29.8H34V17.7c0-1.1-0.9-2-2-2s-2,0.9-2,2v12.2H17.9c-1.1,0-2,0.9-2,2c0,1.1,0.9,2,2,2H30V46
-                            c0,1.1,0.9,2,2,2c1.1,0,2-0.9,2-2V33.8h12.1c1.1,0,2-0.9,2-2S47.2,29.8,46.1,29.8z"/>
-                        </svg>
-                    </span>
+                    <div class="happy center"></div>
                 </label>
             <br />
             <!-- <button type="submit">Upload File</button> -->
@@ -60,10 +38,13 @@
             </pre> -->
         </form>
 
-        <div class="happy center"></div>
-        <div class="happy left"></div>
-        <div class="happy right"></div>
-        <div id="loading-overlay"></div>
+        <div ng-show="loading">
+            <div>
+            </div>
+            <div class="happy left"></div>
+            <div class="happy right"></div>
+            <div id="loading-overlay"></div>
+        </div>
         <!-- <div>
             <ul>
                 <li>{{main.vendor}}</li>
@@ -72,7 +53,35 @@
                 <li>{{main.type}}</li>
             </ul>
         </div> -->
-        <div class="footer navbar-fixed-bottom"></div>
+        <div class="footer navbar-fixed-bottom">
+            <div class="tab"></div>
+            <div class="tab">
+                <span class="middle">
+                    <?xml version="1.0" encoding="utf-8"?>
+                    <!-- Generator: Adobe Illustrator 19.2.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                    <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                         viewBox="0 0 64 64" style="enable-background:new 0 0 64 64;" xml:space="preserve">
+                    <style type="text/css">
+                        .st0{fill:#fff;}
+                    </style>
+                    <g>
+                        <g>
+                            <defs>
+                                <circle id="SVGID_1_" cx="111" cy="-187.4" r="2.2"/>
+                            </defs>
+                            <clipPath id="SVGID_2_">
+                                <use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
+                            </clipPath>
+                        </g>
+                    </g>
+                    <path class="st0" d="M46.1,29.8H34V17.7c0-1.1-0.9-2-2-2s-2,0.9-2,2v12.2H17.9c-1.1,0-2,0.9-2,2c0,1.1,0.9,2,2,2H30V46
+                        c0,1.1,0.9,2,2,2c1.1,0,2-0.9,2-2V33.8h12.1c1.1,0,2-0.9,2-2S47.2,29.8,46.1,29.8z"/>
+                    </svg>
+                </span>
+            </div>
+            <div class="tab"></div>
+        </div>
     </div>
 </body>
 </html>
