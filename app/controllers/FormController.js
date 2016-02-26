@@ -2,18 +2,11 @@ var $ = require('jquery');
 var _ = require('lodash');
 
 module.exports = function($scope, $http) {
-    // var formData = new FormData();
-    // $scope.getTheFiles = function($files) {
-    //     _.forOwn($files, function(value, key) {
-    //         formData.append(value, key);
-    //     });
-    // };
-
-    var formData = {
-        language: 'en',
-        apikey: 'QUHM253S2x'
+    $scope.upload = function () {
+        $scope.uploadMenu = true;
     };
 
+    // $scope.processForm = function(){console.log('it worked');};
     $scope.processForm = function() {
         var file = $scope.file;
         console.log('file is ');
@@ -23,6 +16,11 @@ module.exports = function($scope, $http) {
 
         var fd = new FormData();
         fd.append('image', file);
+
+        var formData = {
+            language: 'en',
+            apikey: 'QUHM253S2x'
+        };
 
         _.forOwn(formData, function(value, key) {
             fd.append(key, value);
@@ -35,7 +33,6 @@ module.exports = function($scope, $http) {
             headers: { 'Content-Type': undefined }
         })
         .success(function(data) {
-            $scope.main.loading = false;
             console.log(data);
             $scope.populateForm(data);
         })
@@ -49,21 +46,23 @@ module.exports = function($scope, $http) {
 
         var strArr = str.split('\n');
 
-        console.dir(strArr);
+        var uploadUrl = '52.90.38.61:3004/jsonify';
 
-        var total;
+        var fd = new FormData();
+        fd.append('data', str);
 
-        strArr.forEach(function(item) {
-            var reg = /^(TOTAL)/g;
-
-            if (reg.test(item)) {
-                total = item.split(' ')[1];
+        $http.post(uploadUrl, fd, {
+            transformRequest: angular.identity,
+            headers: {
+                'Content-Type': undefined
             }
+        })
+        .success(function(data) {
+            $scope.main.loading = false;
+            console.log(data);
+        })
+        .error(function(err) {
+            console.log(err);
         });
-
-        $scope.main.vendor = strArr[0].split(' ')[0];
-        $scope.main.date = strArr.pop().split(' ')[0];
-        $scope.main.total = total;
-        $scope.main.type = 'Groceries';
     };
 };

@@ -1,17 +1,11 @@
-global.jQuery = require('jquery');
-var bootstrap = require('bootstrap');
 var angular = require('angular');
-var attachFastClick = require('fastclick');
-attachFastClick(document.body);
+
+var ngFiles = require('./directives/ngFiles');
 
 var MainController = require('./controllers/MainController');
 var FormController = require('./controllers/FormController');
-var ngFiles = require('./directives/ngFiles');
-// var fileUpload = require('./services/fileUpload');
 
 var app = angular.module('app', []);
-app.controller('MainController', ['$scope', MainController]);
-
 app.directive('ngFiles', ['$parse', ngFiles]);
-// app.service('fileUpload', ['$scope', '$http', fileUpload]);
+app.controller('MainController', ['$scope', MainController]);
 app.controller('FormController', ['$scope', '$http', FormController]);

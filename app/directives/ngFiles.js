@@ -9,6 +9,9 @@ module.exports = function($parse) {
                 scope.$apply(function() {
                     modelSetter(scope, element[0].files[0]);
                 });
+
+                scope.uploadMenu = false;
+                scope.processForm();
             });
         }
     };

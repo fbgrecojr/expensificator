@@ -16,6 +16,10 @@
     <link rel="stylesheet" type="text/css" href="/css/style.css">
 
     <script src="/js/main.js"></script>
+    <script src="/js/fastclick.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" crossorigin="anonymous"></script>
 </head>
 <body ng-controller="MainController">
     <div class="container" ng-controller="FormController">
@@ -27,9 +31,7 @@
         <form ng-submit="processForm()">
             <input type="hidden" name="MAX_FILE_SIZE" value="100000000" />
                 <input name="image" id="file" class="inputfile" type="file" accept="image/*" capture="camera" ng-files="file" />
-                <label for="file">
-                    <div class="happy center"></div>
-                </label>
+                <label for="file" ng-show="uploadMenu" class="happy center"></label>
             <br />
             <!-- <button type="submit">Upload File</button> -->
 
@@ -38,7 +40,7 @@
             </pre> -->
         </form>
 
-        <div ng-show="loading">
+        <div ng-show="uploadMenu">
             <div>
             </div>
             <div class="happy left"></div>
@@ -56,7 +58,7 @@
         <div class="footer navbar-fixed-bottom">
             <div class="tab"></div>
             <div class="tab">
-                <span class="middle">
+                <span class="middle" ng-click="upload()">
                     <?xml version="1.0" encoding="utf-8"?>
                     <!-- Generator: Adobe Illustrator 19.2.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
                     <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
@@ -83,5 +85,11 @@
             <div class="tab"></div>
         </div>
     </div>
+
+    <script>
+        $(function() {
+            FastClick.attach(document.body);
+        });
+    </script>
 </body>
 </html>
