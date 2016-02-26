@@ -175,8 +175,14 @@ label div {
   z-index: 100000;
   top: 0;
   left: 0;
-  opacity: 0.7;
-  background-color: #000; }
+  background: rgba(0, 0, 0, 0.7); }
+
+#loading img {
+  opacity: 1;
+  margin-top: -20px; }
+
+#data {
+  margin-top: -70px; }
 
 #data ul {
   list-style: none; }
