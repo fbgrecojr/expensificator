@@ -36,7 +36,6 @@ h1
     width: 100%
     background-color: $white
     transition: all 300ms
-    display: none
     opacity: 0
 
 form
@@ -128,7 +127,15 @@ span.middle > svg
     bottom: 0px
     z-index: -1
     display: flex
-    justify-content: center
+    justify-content: space-around
+
+.tab
+    text-align: center
+    padding-top: 6px
+    color: $white
+
+.first
+    margin-right: 60px
 
 #logo
     display: flex
@@ -139,6 +146,7 @@ span.middle > svg
     height: 200px
 
 .happy.center svg
+    pointer-events: none
     height: 66px
     width: 42px
 

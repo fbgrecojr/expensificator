@@ -18,7 +18,7 @@ var _ = require('lodash');
 
 module.exports = function($scope, $http) {
     $scope.upload = function () {
-        $('#upload-menu').css({ 'display': 'block' });
+        $('#upload-menu').toggleClass('anim');
         $('.happy').toggleClass('anim');
     };
 
