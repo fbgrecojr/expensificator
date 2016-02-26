@@ -3,13 +3,26 @@ var _ = require('lodash');
 
 module.exports = function($scope, $http) {
     $scope.upload = function () {
-        $('#upload-menu').toggle(function () {
-            $('#loading-overlay').toggleClass('anim');
-            $('.happy').toggleClass('anim');
-        });
+        if ($('#upload-menu').is(':hidden')) {
+            $('#upload-menu').show(function () {
+                $('#loading-overlay').addClass('anim');
+                $('.happy').addClass('anim');
+            });
+        } else {
+            $('#loading-overlay').removeClass('anim');
+            $('.happy').removeClass('anim');
+            setTimeout(function(){
+                $('#upload-menu').hide('slow');
+            }, 100);
+        }
+    };
+
+    $scope.loading = function () {
+        $('#loading').toggle();
     };
 
     $scope.processForm = function() {
+        $scope.loading();
         var file = $scope.file;
         console.log('file is ');
         console.dir(file);
@@ -27,8 +40,6 @@ module.exports = function($scope, $http) {
         _.forOwn(formData, function(value, key) {
             fd.append(key, value);
         });
-
-        $scope.main.loading = true;
 
         $http.post(uploadUrl, fd, {
             transformRequest: angular.identity,
@@ -56,12 +67,17 @@ module.exports = function($scope, $http) {
 
         $.post('http://52.90.38.61:3004/jsonify', fd)
         .success(function(data) {
+            $scope.loading();
             $scope.upload();
             console.log(data);
+            _.forOwn(data, function (value, key) {
+                key = '.' + key;
+                $(key).text(value);
+            });
         })
         .error(function(err) {
+            $scope.loading();
             $scope.upload();
-            $scope.main.loading = false;
             console.log(err);
         });
     };
