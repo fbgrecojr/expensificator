@@ -3,8 +3,8 @@ var _ = require('lodash');
 
 module.exports = function($scope, $http) {
     $scope.upload = function () {
-        $scope.uploadMenu = true;
-        $('.happy').toggleClass('menuItem');
+        $('#upload-menu').css({ 'display': 'block' });
+        $('.happy').toggleClass('anim');
     };
 
     // $scope.processForm = function(){console.log('it worked');};
