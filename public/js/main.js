@@ -18,11 +18,22 @@ var _ = require('lodash');
 
 module.exports = function($scope, $http) {
     $scope.upload = function () {
-        $('#upload-menu').toggleClass('anim');
-        $('.happy').toggleClass('anim');
+        $('#upload-menu').toggle(function () {
+            $('#loading-overlay').toggleClass('anim');
+            $('.happy').toggleClass('anim');
+        });
     };
 
-    // $scope.processForm = function(){console.log('it worked');};
+    $scope.test = function() {
+        console.log('worked');
+        data = {
+            data: 'some string total 44.21'
+        };
+        $.post('http://52.90.38.61:3004/jsonify', data).success(function(data){
+            console.log(data);
+        });
+    };
+
     $scope.processForm = function() {
         var file = $scope.file;
         console.log('file is ');
@@ -68,7 +79,7 @@ module.exports = function($scope, $http) {
             data: str
         };
 
-        $http.post(uploadUrl, fd)
+        $.post('http://52.90.38.61:3004/jsonify', fd)
         .success(function(data) {
             $scope.main.loading = false;
             console.log(data);

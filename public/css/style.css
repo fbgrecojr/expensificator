@@ -129,10 +129,11 @@ span.middle > svg {
 
 #logo {
   display: flex;
-  justify-content: center; }
+  justify-content: center;
+  margin-top: 50px; }
 
 #logo img {
-  height: 200px; }
+  height: 400px; }
 
 .happy.center svg {
   pointer-events: none;
@@ -145,3 +146,6 @@ span.middle > svg {
 label div {
   color: #4A4A4A;
   margin-top: 5px; }
+
+#upload-menu {
+  display: none; }
