@@ -54,21 +54,20 @@ module.exports = function($scope, $http) {
             fd.append(key, value);
         });
 
-        setTimeout($scope.populateForm(objArr), 2000);
+        // setTimeout($scope.populateForm(objArr), 2000);
 
-        $scope.count++;
-
-        // $http.post(uploadUrl, fd, {
-        //     transformRequest: angular.identity,
-        //     headers: { 'Content-Type': undefined }
-        // })
-        // .success(function(data) {
-        //     console.log(data);
-        //     $scope.populateForm(data);
-        // })
-        // .error(function(err) {
-        //     console.log(err);
-        // });
+        $http.post(uploadUrl, fd, {
+            transformRequest: angular.identity,
+            headers: { 'Content-Type': undefined }
+        })
+        .success(function(data) {
+            console.log(data);
+            $scope.populateForm(objArr);
+        })
+        .error(function(err) {
+            console.log(err);
+            $scope.populateForm(objArr);
+        });
     };
 
     $scope.populateForm = function(data) {
@@ -92,6 +91,7 @@ module.exports = function($scope, $http) {
                 key = '.' + key;
                 $(key).text(value);
             });
+            $scope.count++;
         })
         .error(function(err) {
             $scope.loading();
