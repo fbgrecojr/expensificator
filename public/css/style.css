@@ -55,6 +55,7 @@ span.middle {
   background-color: #00978C;
   position: fixed;
   bottom: 0px;
+  left: 50%;
   margin: auto;
   margin-left: -30px;
   height: 65px;
@@ -69,17 +70,18 @@ span.middle {
   text-overflow: ellipsis;
   white-space: nowrap;
   cursor: pointer;
-  overflow: hidden;
   display: inline-block;
   color: #fff;
-  background-color: #FFFFFF;
+  background-color: #fff;
   position: fixed;
-  bottom: 125px;
+  bottom: 55px;
   border: 1px solid #C5C5C5;
   margin: auto;
   height: 70px;
   width: 70px;
   border-radius: 50%;
+  opacity: 0;
+  transition: transform 300ms;
   box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.26), 0 4px 10px 0 rgba(0, 0, 0, 0.22); }
 
 .center {
@@ -89,12 +91,19 @@ span.middle {
 .right {
   margin: 0;
   right: 10%;
-  bottom: 90px; }
+  bottom: 20px; }
 
 .left {
   margin: 0;
   left: 10%;
-  bottom: 90px; }
+  bottom: 20px; }
+
+.ng-hide-remove {
+  opacity: 1; }
+
+.happy {
+  opacity: 1;
+  transform: translateY(-70px); }
 
 span.middle > svg {
   height: 60px;
@@ -109,3 +118,22 @@ span.middle > svg {
   z-index: -1;
   display: flex;
   justify-content: center; }
+
+#logo {
+  display: flex;
+  justify-content: center;
+  margin-top: 120px; }
+
+#logo img {
+  height: 200px; }
+
+.happy.center svg {
+  height: 66px;
+  width: 42px; }
+
+.happy.center svg path {
+  fill: #00978C; }
+
+label div {
+  color: #4A4A4A;
+  margin-top: 5px; }

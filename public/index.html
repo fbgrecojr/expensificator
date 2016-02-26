@@ -28,61 +28,64 @@
             <h1>{{ message }}</h1>
         </div>
 
-        <form ng-submit="processForm()">
-            <input type="hidden" name="MAX_FILE_SIZE" value="100000000" />
-                <input name="image" id="file" class="inputfile" type="file" accept="image/*" capture="camera" ng-files="file" />
-                <label for="file" ng-show="uploadMenu" class="happy center"></label>
-            <br />
-            <!-- <button type="submit">Upload File</button> -->
+        <div id="logo">
+            <img src="/images/svg/logo.svg">
+        </div>
 
-            <!-- <pre>
-                {{ formData }}
-            </pre> -->
-        </form>
 
-        <div ng-show="uploadMenu">
-            <div>
-            </div>
+        <div ng-show="uploadMenu" >
             <div class="happy left"></div>
+                <form ng-submit="processForm()">
+                    <input type="hidden" name="MAX_FILE_SIZE" value="100000000" />
+                        <input name="image" id="file" class="inputfile" type="file" accept="image/*" capture="camera" ng-files="file" />
+                        <label for="file" ng-show="uploadMenu" class="happy center">
+                            <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+                            <svg width="32px" height="25px" viewBox="0 0 32 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                                <!-- Generator: Sketch 3.5.2 (25235) - http://www.bohemiancoding.com/sketch -->
+                                <title>Untitled 4</title>
+                                <desc>Created with Sketch.</desc>
+                                <defs></defs>
+                                <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+                                    <path d="M7.97886374,4.02932619 L3.55059437,4.02932619 C1.59577275,4.02932619 0,5.52536314 0,7.38044896 L0,20.7051514 C0,22.5602372 1.59577275,24.0562742 3.55059437,24.0562742 L28.3449134,24.0562742 C30.3196822,24.0562742 31.8955078,22.5602372 31.8955078,20.7051514 L31.8955078,7.38044896 C31.8955078,5.52536314 30.3196822,4.02932619 28.3449134,4.02932619 L23.9166441,4.02932619 L23.9166441,3.1915455 C23.9166441,1.41624831 22.4804486,0 20.7250986,0 L11.1704092,0 C9.41505922,0 7.97886374,1.41624831 7.97886374,3.1915455 L7.97886374,4.02932619 Z M8.94760187,13.169793 C8.94760187,16.9923437 11.9965411,20.0867895 15.750832,20.0867895 C19.5278761,20.0867895 22.5768153,16.9923437 22.5768153,13.169793 C22.5768153,9.36999558 19.5278761,6.27554979 15.750832,6.27554979 C11.9965411,6.27554979 8.94760187,9.36999558 8.94760187,13.169793 Z" id="camera-icon" fill="#000000" sketch:type="MSShapeGroup"></path>
+                                </g>
+                            </svg>
+                            <div>Camera</div>
+                        </label>
+                    <br />
+                </form>
             <div class="happy right"></div>
             <div id="loading-overlay"></div>
         </div>
-        <!-- <div>
-            <ul>
-                <li>{{main.vendor}}</li>
-                <li>{{main.date}}</li>
-                <li>{{main.total}}</li>
-                <li>{{main.type}}</li>
-            </ul>
-        </div> -->
+        <span class="middle" ng-click="uploadMenu = !uploadMenu">
+            <?xml version="1.0" encoding="utf-8"?>
+            <!-- Generator: Adobe Illustrator 19.2.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+            <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 viewBox="0 0 64 64" style="enable-background:new 0 0 64 64;" xml:space="preserve">
+            <style type="text/css">
+                .st0{fill:#fff;}
+            </style>
+            <g>
+                <g>
+                    <defs>
+                        <circle id="SVGID_1_" cx="111" cy="-187.4" r="2.2"/>
+                    </defs>
+                    <clipPath id="SVGID_2_">
+                        <use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
+                    </clipPath>
+                </g>
+            </g>
+            <path class="st0" d="M46.1,29.8H34V17.7c0-1.1-0.9-2-2-2s-2,0.9-2,2v12.2H17.9c-1.1,0-2,0.9-2,2c0,1.1,0.9,2,2,2H30V46
+                c0,1.1,0.9,2,2,2c1.1,0,2-0.9,2-2V33.8h12.1c1.1,0,2-0.9,2-2S47.2,29.8,46.1,29.8z"/>
+            </svg>
+        </span>
         <div class="footer navbar-fixed-bottom">
-            <div class="tab"></div>
             <div class="tab">
-                <span class="middle" ng-click="upload()">
-                    <?xml version="1.0" encoding="utf-8"?>
-                    <!-- Generator: Adobe Illustrator 19.2.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-                    <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                         viewBox="0 0 64 64" style="enable-background:new 0 0 64 64;" xml:space="preserve">
-                    <style type="text/css">
-                        .st0{fill:#fff;}
-                    </style>
-                    <g>
-                        <g>
-                            <defs>
-                                <circle id="SVGID_1_" cx="111" cy="-187.4" r="2.2"/>
-                            </defs>
-                            <clipPath id="SVGID_2_">
-                                <use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
-                            </clipPath>
-                        </g>
-                    </g>
-                    <path class="st0" d="M46.1,29.8H34V17.7c0-1.1-0.9-2-2-2s-2,0.9-2,2v12.2H17.9c-1.1,0-2,0.9-2,2c0,1.1,0.9,2,2,2H30V46
-                        c0,1.1,0.9,2,2,2c1.1,0,2-0.9,2-2V33.8h12.1c1.1,0,2-0.9,2-2S47.2,29.8,46.1,29.8z"/>
-                    </svg>
-                </span>
+                <span></span>
             </div>
-            <div class="tab"></div>
+            <div class="tab">
+                <span></span>
+            </div>
         </div>
     </div>
 

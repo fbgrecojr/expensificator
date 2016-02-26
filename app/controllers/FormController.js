@@ -4,6 +4,7 @@ var _ = require('lodash');
 module.exports = function($scope, $http) {
     $scope.upload = function () {
         $scope.uploadMenu = true;
+        $('.happy').toggleClass('menuItem');
     };
 
     // $scope.processForm = function(){console.log('it worked');};
@@ -46,22 +47,22 @@ module.exports = function($scope, $http) {
 
         var strArr = str.split('\n');
 
-        var uploadUrl = '52.90.38.61:3004/jsonify';
+        var uploadUrl = 'http://52.90.38.61:3004/jsonify';
 
-        var fd = new FormData();
-        fd.append('data', str);
+        var fd = {
+            data: str
+        };
 
         $http.post(uploadUrl, fd, {
-            transformRequest: angular.identity,
-            headers: {
-                'Content-Type': undefined
-            }
+
         })
         .success(function(data) {
             $scope.main.loading = false;
             console.log(data);
         })
         .error(function(err) {
+            $scope.main.error = true;
+            $scope.main.loading = false;
             console.log(err);
         });
     };
